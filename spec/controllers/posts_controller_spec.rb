@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
 
   # we create a post and assign it to my_post using let. We use RandomData to give my_post a random title and body.
-  let(:my_post) { Post.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
+  let!(:my_post) { Post.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
 
   # the test performs a GET on the index view and expects the response to be successful. The remaining tests follow the same pattern.
   describe "GET #index" do
