@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  before_save :format_name
+
   before_save { self.email = email.downcase if email.present? }
 
   # we use Ruby's validates function to ensure that name is present and has a maximum and minimum length.
@@ -16,4 +19,16 @@ class User < ApplicationRecord
 
   # adds methods to set and authenticate against a BCrypt password. This mechanism requires you to have a password_digest attribute
   has_secure_password
+
+
+      def format_name
+        if name
+          name_array = []
+          name.split.each do |n|
+              name_array << n.capitalize
+          end
+          self.name = name_array.join(' ')
+        end
+      end
+
 end
