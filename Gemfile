@@ -49,3 +49,6 @@ group :development, :test do
 end
 
 gem 'bootstrap-sass'
+
+# Used for encrypting password_digest
+gem 'bcrypt'
