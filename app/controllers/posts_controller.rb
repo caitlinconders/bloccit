@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
     # we find the post that corresponds to the id in the params that was passed to  show and assign it to @post. Unlike in the index method, in the show method, we populate an instance variable with a single post, rather than a collection of posts.
     @post = Post.find(params[:id])
+    
   end
 
   def new

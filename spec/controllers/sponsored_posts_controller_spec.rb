@@ -18,7 +18,7 @@ RSpec.describe SponsoredPostsController, type: :controller do
       expect(response).to render_template :show
     end
 
-    it "assigns my_post to @post" do
+    it "assigns my_sponsored_post to @my_post" do
       get :show, params: { topic_id: my_topic.id, id: my_sponsored_post.id }
 
       expect(assigns(:sponsored_post)).to eq(my_sponsored_post)
