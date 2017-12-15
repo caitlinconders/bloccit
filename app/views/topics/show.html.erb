@@ -24,11 +24,11 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <%= link_to sponsored_post.title, topic_post_path(@topic, sponsored_post) %>
+            <%= link_to post.title, topic_post_path(@topic, post) %>
           </h4>
           <small>
           submitted <%= time_ago_in_words(post.created_at) %> ago <br>
-          <%= sponsored_post.comments.count %> Comments
+          <%= post.comments.count %> Comments
         </small>
         </div>
       </div>
