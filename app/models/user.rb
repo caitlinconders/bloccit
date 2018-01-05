@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   before_save { self.email = email.downcase if email.present? }
 
   # we use Ruby's validates function to ensure that name is present and has a maximum and minimum length.
@@ -16,4 +17,10 @@ class User < ApplicationRecord
 
   # adds methods to set and authenticate against a BCrypt password. This mechanism requires you to have a password_digest attribute
   has_secure_password
+
+  def avatar_url
+    gravatar_id = Digest::MD5::hexdigest(self.email).downcase
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=48"
+  end
+
 end
