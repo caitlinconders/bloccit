@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
+
   before_save { self.email = email.downcase if email.present? }
 
   # we use Ruby's validates function to ensure that name is present and has a maximum and minimum length.
