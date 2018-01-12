@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   before_save { self.email = email.downcase if email.present? }
+  before_save { self.role ||= :member }
 
   # we use Ruby's validates function to ensure that name is present and has a maximum and minimum length.
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
@@ -18,4 +19,6 @@ class User < ApplicationRecord
 
   # adds methods to set and authenticate against a BCrypt password. This mechanism requires you to have a password_digest attribute
   has_secure_password
+
+  enum role: [:member, :admin]
 end
