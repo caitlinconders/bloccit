@@ -20,5 +20,5 @@ class User < ApplicationRecord
   # adds methods to set and authenticate against a BCrypt password. This mechanism requires you to have a password_digest attribute
   has_secure_password
 
-  enum role: [:member, :admin]
+  enum role: [:member, :admin, :moderator]
 end

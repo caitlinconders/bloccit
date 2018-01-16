@@ -41,6 +41,21 @@ posts = Post.all
   )
 end
 
+user = User.first
+user.update_attributes!(
+  email: 'caitlinconders@gmail.com',
+  password: 'helloworld',
+  role: 'moderator'
+)
+
+# Create a moderator user
+moderator = User.create!(
+  name:     'Mod User',
+  email:    'mod@example.com',
+  password: 'helloworld',
+  role:     'moderator'
+)
+
 # Create an admin user
 admin = User.create!(
   name:     'Admin User',
@@ -55,6 +70,8 @@ member = User.create!(
   email:    'member@example.com',
   password: 'helloworld'
 )
+
+
 
 puts "Seed finished"
 puts "#{User.count} users created"

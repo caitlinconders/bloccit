@@ -61,6 +61,12 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
 
+    if current_user.moderator?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to [@post.topic, @post]
+      return
+    end
+
     # we call destroy on post. if the call is successful, we set a flash message and redirect the user to the posts index view. if destroy fails, then we redirect the user to the show view using render :show.
     if @post.destroy
       flash[:notice] = "\"#{@post.title}\" was deleted successfully."
@@ -79,7 +85,7 @@ class PostsController < ApplicationController
     def authorize_user
       post = Post.find(params[:id])
 
-      unless current_user == post.user || current_user.admin?
+      unless current_user == post.user || current_user.admin? || current_user.moderator?
         flash[:alert] = "You must be an admin to do that."
         redirect_to [post.topic, post]
       end

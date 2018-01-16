@@ -149,6 +149,22 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+# MOD NON-OWNER
+
+  context "mod user trying to delete a post they don't own" do
+    before do
+      other_user.moderator!
+      create_session(other_user)
+    end
+
+    describe "DELETE destroy" do
+      it "returns http redirect" do
+        delete :destroy, params: { topic_id: my_topic.id, id: my_post.id }
+        expect(response).to redirect_to([my_topic, my_post])
+      end
+    end
+  end
+
   ## MEMBER OWNER ##
 
   context "member user doing CRUD on a post they own" do
