@@ -4,7 +4,7 @@
   <div class="col-md-8">
 <!-- we loop over each topic in @topics -->
     <% @topics.each do |topic| %>
-      <%= render partial: 'topic', locals: { topics: topic } %>
+      <%= render partial: 'topic', locals: { topic: topic } %>
     <% end %>
   </div>
 
