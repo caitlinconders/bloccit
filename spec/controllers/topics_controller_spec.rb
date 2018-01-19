@@ -313,13 +313,7 @@ RSpec.describe TopicsController, type: :controller do
           get :show, params: { id: my_topic.id }
           expect(assigns(:topic)).to eq(my_topic)
         end
-      end
-
-      describe "GET new" do
-        it "returns http redirect" do
-          get :new
-          expect(response).to redirect_to(topics_path)
-        end
+      
       end
 
       describe "POST create" do

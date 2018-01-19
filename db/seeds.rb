@@ -41,13 +41,6 @@ posts = Post.all
   )
 end
 
-user = User.first
-user.update_attributes!(
-  email: 'caitlinconders@gmail.com',
-  password: 'helloworld',
-  role: 'moderator'
-)
-
 # Create a moderator user
 moderator = User.create!(
   name:     'Mod User',
